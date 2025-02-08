@@ -12,6 +12,8 @@ public class Bird_script : MonoBehaviour
     public float birdDeadZoneUp = 18;
     public float birdDeadZoneDown = -17;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class Bird_script : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
         {
             birdRigidbody.velocity = Vector2.up * flapStrength;
+            animator.SetTrigger("Flop");
         }
 
         if (transform.position.y > birdDeadZoneUp || transform.position.y < birdDeadZoneDown)
