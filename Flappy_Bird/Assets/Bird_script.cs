@@ -27,8 +27,10 @@ public class Bird_script : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
         {
             birdRigidbody.velocity = Vector2.up * flapStrength;
-            animator.SetTrigger("Flop");
         }
+
+        if (birdRigidbody.velocity.y < 0) animator.SetBool("Flop", true);
+        else animator.SetBool("Flop", false);
 
         if (transform.position.y > birdDeadZoneUp || transform.position.y < birdDeadZoneDown)
         {
